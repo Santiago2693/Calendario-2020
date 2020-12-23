@@ -5,7 +5,7 @@ camposObligatorios = 'byr: iyr: eyr: hgt: hcl: ecl: pid:'
 
 with open(path) as p:
             for line in p:
-                if not line=="\n":
+                if not line=="\n" :
                         print (line)
                         for x in camposObligatorios.split():
 
@@ -17,7 +17,7 @@ with open(path) as p:
                 else:
 
                     if camposValidos>=7:
-                        total=total+1
+                        total+=1
                     print(total)
                     camposValidos=0
 
