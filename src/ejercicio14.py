@@ -38,10 +38,8 @@ def main(ruta):
 
                 #print(mascaraActual)
                 for i in range(len(mascaraActual)):
-                    if mascaraActual[i]=="1":
-                        auxiliar[i]="1"
-                    if mascaraActual[i]=="0":
-                        auxiliar[i]="0"
+                    if not mascaraActual[i]=="X":
+                        auxiliar[i]=mascaraActual[i]
 
 
 
@@ -58,9 +56,47 @@ def main(ruta):
         total=total+int(convertirADecimal(diccionarioDatos[clave]))
     print (total)
 
+def main2(ruta):
+    diccionarioDatos=dict()
+    mascaraActual=""
+
+    with open(ruta) as f:
+        for line in f:
+            clave,valor=line.split(' = ')
+
+            if clave[0:3]=="mem":
+
+
+                memoria= clave[4:len(clave)-1]
+                auxiliar=list(convertirABinario(int(valor)))
+
+
+                print(mascaraActual)
+                for i in range(len(mascaraActual)):
+                    if mascaraActual[i]=="1":
+                        auxiliar[i]="1"
+                    if mascaraActual[i]=="X":
+                        auxiliar[i]="X"
+
+
+
+
+                diccionarioDatos[memoria]= "".join(auxiliar)
+                #print(diccionarioDatos[memoria])
+
+
+            else:
+
+                mascaraActual=valor.strip()
+
+    total=0
+
+
+
 
 
 
 main(PATH)
+main2(PATH)
 #converirABinario(8)
 #convertirADecimal("1000010101010100101011")
