@@ -1,5 +1,5 @@
 PATH='puzzle_input/ejercicio14.txt'
-def converirABinario(numero):
+def convertirABinario(numero):
     auxiliar=list()
     while numero != 0:
         auxiliar.append(str(numero%2))
@@ -9,7 +9,7 @@ def converirABinario(numero):
     binario=binario.join(auxiliar)
     while len(binario)!=36:
         binario="0"+binario
-    print (binario)
+    #print (binario)
     return binario
 
 def convertirADecimal(decimal):
@@ -18,37 +18,45 @@ def convertirADecimal(decimal):
     numero=0
     for i in range(len(decimal)):
         numero=numero+int(decimal[i])*pow(2, len(decimal)-i-1)
-    print (numero)
+
     return numero
 
 def main(ruta):
     diccionarioDatos=dict()
     mascaraActual=""
+
     with open(ruta) as f:
         for line in f:
             clave,valor=line.split(' = ')
 
-            if not clave[0:3]=="mem":
+            if clave[0:3]=="mem":
 
 
                 memoria= clave[4:len(clave)-1]
-                auxiliar=list(converirABinario(int(valor)))
-                print(mascaraActual)
+                auxiliar=list(convertirABinario(int(valor)))
 
 
+                #print(mascaraActual)
                 for i in range(len(mascaraActual)):
-                    if not mascaraActual[i]=="x":
-                        auxiliar[i]=mascaraActual[i]
+                    if mascaraActual[i]=="1":
+                        auxiliar[i]="1"
+                    if mascaraActual[i]=="0":
+                        auxiliar[i]="0"
+
 
 
                 diccionarioDatos[memoria]= "".join(auxiliar)
-                print(diccionarioDatos[memoria])
+                #print(diccionarioDatos[memoria])
 
 
             else:
 
-                mascaraActual=valor
+                mascaraActual=valor.strip()
 
+    total=0
+    for clave in diccionarioDatos:
+        total=total+int(convertirADecimal(diccionarioDatos[clave]))
+    print (total)
 
 
 
