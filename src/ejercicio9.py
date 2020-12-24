@@ -1,27 +1,48 @@
 PATH = 'puzzle_input/ejercicio9M.txt'
+def busquedaBinaria(numero, lista):
+    """
+    Esta busqueda no me devuelve la posisicion en el array original
+    pero me devuelve un entero positivo si es que el valor se encuentra
+    y -1 caso contrario
+    """
+    listaTemp = lista
+    medio = len(lista)
+    while medio >0:
+        n = len(listaTemp)
+        medio = n//2
+        if listaTemp[medio] == numero:
+            return medio
+        elif listaTemp[medio]> numero:
+            listaTemp = listaTemp[0:medio]
+            continue
+        else:
+            listaTemp = listaTemp[medio:n]
+            continue
+    return -1
+
+#una buena alternativa para hacer mas eficiente la busqueda de numeros
+#puede ser ordenar primero el preambulo para asi delimitar el espacio
+#de busqueda de los numeros dentro del preambulo y asi poder buscar solo
+#en un intervalo de esa lista
 def main(ruta, preamble):
     lista = list()
     with open(ruta) as f:
         for line in f:
             lista.append(int(line.strip()))
-    #print(lista)
     i = 0
-
-    while(True):
-        try:
-            for j in range(0,preamble):
-                if lista[j+i] < lista[preamble+i]:
-                    otroValor = lista[preamble+i] - lista[j+i]
-                    print(lista[j+i])
-                else:
-                    continue
-                if otroValor in lista[i:preamble+i]:
-                    i+=1
-                    break
-            if otroValor not in lista[i:preamble+i]:
-                print(lista[preamble+i])
+    while True:
+        #ordeno mi preambulo
+        preambulo = sorted(lista[i:i+preamble])
+        #ahora voy a buscar en la mitad inferior o superior,
+        #dependiendo de en que sector se encuentre el resto
+        encontrado = False
+        for j in range(25):
+            resto = abs(preambulo[j]-lista[i+preamble])
+            if not busquedaBinaria(resto, preambulo) == -1:
+                i+=1
+                encontrado = True
                 break
-        except:
-            break
+        if not encontrado:
+            return lista[i+preamble]
 
-main(PATH, 25)
+print(main(PATH, 25))
