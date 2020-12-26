@@ -28,8 +28,8 @@ def main(ruta):
     valoresMovimiento=dict()
     baldosas=dict()
     listaMovimientos=procesarDatos(ruta)
-    valoresMovimiento["e"]=(346,0)
-    valoresMovimiento["w"]=(-346,0)
+    valoresMovimiento["e"]=(692,0)
+    valoresMovimiento["w"]=(-692,0)
     valoresMovimiento["se"]=(346,-600)
     valoresMovimiento["sw"]=(-346,-600)
     valoresMovimiento["ne"]=(346,600)
@@ -51,7 +51,7 @@ def main(ruta):
             if baldosas[coordenadaX,coordenadaY]=="negro":
                 baldosas[coordenadaX,coordenadaY]="blanco"
 
-            if baldosas[coordenadaX,coordenadaY]=="blanco":
+            else:
                 baldosas[coordenadaX,coordenadaY]="negro"
 
         else:
