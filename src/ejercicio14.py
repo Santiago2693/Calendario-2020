@@ -84,7 +84,7 @@ def main(ruta):
     #numero binario a decimal
     for clave in diccionarioDatos:
         total=total+int(convertirADecimal(diccionarioDatos[clave]))
-    print ("Suma parte 1",total)
+    print ("La suma de todos los valores en memoria de la parte 2 es:,total)
 #parte 2
 def main2(ruta):
     diccionarioDatos=dict()
@@ -109,7 +109,7 @@ def main2(ruta):
                         auxiliar[i]="1"
                     if mascaraActual[i]=="X":
                         auxiliar[i]="X"
-
+                #se obtiene un string con la direccion
                 posiblesDirecciones= "".join(auxiliar)
                 todasLasDirecciones=obtenerDirecciones(posiblesDirecciones)
                 listaDirecciones=list()
@@ -128,7 +128,7 @@ def main2(ruta):
     total=0
     for clave in diccionarioDatos:
         total=total+int(diccionarioDatos[clave])
-    print ("Suma parte 2: ",total)
+    print ("La suma de todos los valores en memoria de la parte 2 es: ",total)
 
 
 

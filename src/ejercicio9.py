@@ -1,5 +1,6 @@
 import functools
 PATH = 'puzzle_input/ejercicio9M.txt'
+PATH2 = 'puzzle_input/ejercicio9.txt'
 def busquedaBinaria(numero, lista):
     """
     Esta busqueda no me devuelve la posisicion en el array original
@@ -68,7 +69,8 @@ def main(ruta, preamble):
     #ahora buscamos la secuencia
     subset = sorted(encontrarSubset(valor, lista))
     #retornamos la falla de la encriptacion
+    print(subset[0]+ subset[len(subset)-1])
     return subset[0]+ subset[len(subset)-1]
 
 
-print("La falla de la encriptacion es:",main(PATH, 25))
+print("La falla de la encriptacion es:",main(PATH2, 25))
