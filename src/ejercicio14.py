@@ -54,7 +54,7 @@ def main(ruta):
     total=0
     for clave in diccionarioDatos:
         total=total+int(convertirADecimal(diccionarioDatos[clave]))
-    print (total)
+    print ("Suma parte 1",total)
 
 def main2(ruta):
     diccionarioDatos=dict()
@@ -68,20 +68,22 @@ def main2(ruta):
 
 
                 memoria= clave[4:len(clave)-1]
-                auxiliar=list(convertirABinario(int(valor)))
+
+                auxiliar=list(convertirABinario(int(memoria)))
 
 
-                print(mascaraActual)
+
                 for i in range(len(mascaraActual)):
                     if mascaraActual[i]=="1":
                         auxiliar[i]="1"
                     if mascaraActual[i]=="X":
                         auxiliar[i]="X"
 
+                posiblesDirecciones= "".join(auxiliar)
 
+                listaDirecciones=list()
 
-
-                diccionarioDatos[memoria]= "".join(auxiliar)
+                diccionarioDatos[memoria]= valor
                 #print(diccionarioDatos[memoria])
 
 
@@ -90,6 +92,9 @@ def main2(ruta):
                 mascaraActual=valor.strip()
 
     total=0
+    for clave in diccionarioDatos:
+        total=total+int(diccionarioDatos[clave])
+    print ("Suma parte 2: ",total)
 
 
 
