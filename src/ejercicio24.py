@@ -21,6 +21,29 @@ def procesarDatos(ruta):
             movimientos.append(auxiliar[:-1].strip())
 
     return movimientos
+def volterarPorDias(baldosas,dias,adyacentes):
+    totalNegro=0
+    diccionarioAuxiliar=baldosas.copy()
+    for clave in diccionarioAuxiliar:
+        contadorNegro=0
+        for i in adyacentes:
+
+
+            if (adyacentes[i][0]+clave[0],adyacentes[i][1]+clave[1]) in diccionarioAuxiliar and diccionarioAuxiliar[adyacentes[i][0]+clave[0],adyacentes[i][1]+clave[1]]=="negro":
+
+                contadorNegro+=1
+        if diccionarioAuxiliar[clave]=="negro"and  (contadorNegro==0 or contadorNegro>2):
+            baldosas[clave]="blanco"
+        if diccionarioAuxiliar[clave]=="blanco"and contadorNegro==2:
+            baldosas[clave]="negro"
+
+
+
+
+
+
+
+
 
 
 
@@ -58,9 +81,17 @@ def main(ruta):
             baldosas[coordenadaX,coordenadaY]="negro"
 
 
-    print(baldosas)
+
 
     contador=0
+    for clave in baldosas:
+        if baldosas[clave]=="negro":
+            contador+=1
+    print ("El total de baldosas en color negro es de: ",contador)
+
+    volterarPorDias(baldosas,100,valoresMovimiento)
+    contador=0
+
     for clave in baldosas:
         if baldosas[clave]=="negro":
             contador+=1

@@ -84,7 +84,7 @@ def main(ruta):
     #numero binario a decimal
     for clave in diccionarioDatos:
         total=total+int(convertirADecimal(diccionarioDatos[clave]))
-    print ("La suma de todos los valores en memoria de la parte 2 es:,total)
+    print ("La suma de todos los valores en memoria de la parte 2 es:",total)
 #parte 2
 def main2(ruta):
     diccionarioDatos=dict()
