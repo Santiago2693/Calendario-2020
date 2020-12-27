@@ -1,4 +1,5 @@
 PATH='puzzle_input/ejercicio14.txt'
+PATH2='puzzle_input/ejercicio14M.txt'
 #esta funcion convierte un númeo decimal a binario anteponiendo los ceros necesarios
 #para que su tamaño sea de 36
 def convertirABinario(numero):
@@ -135,7 +136,7 @@ def main2(ruta):
 
 
 
-main(PATH)
-main2(PATH)
+main(PATH2)
+main2(PATH2)
 #converirABinario(8)
 #convertirADecimal("1000010101010100101011")

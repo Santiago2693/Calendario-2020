@@ -1,4 +1,5 @@
 PATH='puzzle_input/ejercicio24.txt'
+PATH2 = 'puzzle_input/ejercicio24M.txt'
 def procesarDatos(ruta):
     "la funcion devuelve una lista con los movimientos separados por una coma"
 
@@ -117,7 +118,7 @@ def main(ruta):
     for clave in baldosas:
         if baldosas[clave]=="negro":
             contador+=1
-    print ("El total de baldosas en color negro despues de 1 dia es de: ",contador)
+    print ("El total de baldosas en color negro despues de 100 dia es de: ",contador)
 
 
 
@@ -129,4 +130,4 @@ def main(ruta):
 
 
 
-main(PATH)
+main(PATH2)
