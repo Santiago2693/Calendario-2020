@@ -1,4 +1,5 @@
 import json
+import re
 PATH='puzzle_input/ejercicio19.txt'
 def procesarDatos(ruta):
     """
@@ -16,7 +17,6 @@ def procesarDatos(ruta):
             gramatica[int(datos[0])]= [x.split() for x in datos[1].strip().split("|")]
         for line in archivo:
             cadenas.append(line.strip())
-    print(gramatica)
     return gramatica, cadenas
 
 #ahora deberiamos armar un arbol para luego poder hacer una
@@ -35,6 +35,9 @@ class Nodo():
         nuevoHijo.setPadre(self)
         self.hijos.append(nuevoHijo)
         #con la linea anterior me aseguro que los hijos vayan de izq a derecha
+    def delHijo(self, hijo):
+        hijo.setPadre(None)
+        self.hijos.remove(hijo)
 
     def getPadre(self):
         return self.padre
@@ -130,14 +133,36 @@ class Arbol():
         return niveles
 
 
-tree = Arbol()
-tree.insertarNodo(Nodo(contenido = 5))
-tree.insertarNodo(Nodo(contenido = 2), clavePadre=5)
-tree.insertarNodo(Nodo(contenido = 7), clavePadre=5)
-tree.insertarNodo(Nodo(contenido = 8), clavePadre=2)
-tree.insertarNodo(Nodo(contenido = 9), clavePadre=2)
-tree.insertarNodo(Nodo(contenido = 1), clavePadre=9)
-tree.insertarNodo(Nodo(contenido = 10), clavePadre=7)
-tree.insertarNodo(Nodo(contenido = 3), clavePadre = 1)
-tree.insertarNodo(Nodo(contenido = 4), clavePadre = 1)
-print(tree)
+def derivacionIzq(diccionario, node):
+    #casos base
+    if (node.getContenido() == "\"a\""):
+        return 'a'
+    elif (node.getContenido() == "\"b\""):
+        return 'b'
+    else:
+        #caso recursivos
+        cadena = ""
+        for clave in diccionario[int(node.getContenido())][0]:
+            nodo = Nodo(contenido = clave)
+            node.setHijo(nodo)
+            #return derivacionIzq(diccionario, nodo)
+            cadena += derivacionIzq(diccionario, nodo)
+        return cadena
+
+def comprobacion(cadena):
+    pass
+
+#ahora nos falta en efecto hacer las derivaciones correspondientes
+def main(ruta):
+    gramatica, cadenas = procesarDatos(ruta)
+    #debo construir mi arbol en base a la cadena
+    #vamos a hacer derivaciones mas a la izq
+    arbolParseo = Arbol()
+    #ahora voy a hacer la insercion de los nodos
+    raiz = Nodo(contenido ="0")
+    arbolParseo.insertarNodo(raiz)
+    cadena = derivacionIzq(gramatica, raiz)
+    print(arbolParseo)
+    print(cadena)
+
+main(PATH)
