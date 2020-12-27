@@ -1,3 +1,4 @@
+import json
 PATH='puzzle_input/ejercicio19.txt'
 def procesarDatos(ruta):
     """
@@ -12,7 +13,7 @@ def procesarDatos(ruta):
             if line == "\n":
                 break
             datos = line.strip().split(":")
-            gramatica[int(datos[0])]= datos[1].strip().split("|")
+            gramatica[int(datos[0])]= [x.split() for x in datos[1].strip().split("|")]
         for line in archivo:
             cadenas.append(line.strip())
     print(gramatica)
@@ -83,6 +84,9 @@ class Arbol():
     def buscarNodo(self, clave):
         #bucamos sobre el arbol
         return Arbol.buscadorHelper(clave, self.raiz)
+
+    def eliminarNodo(self, clave):
+        pass
 
 
     def __str__(self):
