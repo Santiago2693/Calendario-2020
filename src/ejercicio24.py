@@ -21,6 +21,51 @@ def procesarDatos(ruta):
             movimientos.append(auxiliar[:-1].strip())
 
     return movimientos
+def volterarPorDias(baldosas,dias,adyacentes):
+
+    for contador in range(dias):
+        diccionarioAuxiliar=baldosas.copy()
+        for clave in diccionarioAuxiliar:
+            contadorNegro=0
+            #solo comprueba las baldosas definidas en el diccionrio
+            for i in adyacentes:
+                adyacenteX=adyacentes[i][0]+clave[0]
+                adyacenteY=adyacentes[i][1]+clave[1]
+
+                if (adyacenteX,adyacenteY) in diccionarioAuxiliar and diccionarioAuxiliar[adyacenteX,adyacenteY]=="negro":
+                    contadorNegro+=1
+
+
+            if diccionarioAuxiliar[clave]=="negro"and  (contadorNegro==0 or contadorNegro>2):
+                baldosas[clave]="blanco"
+            if diccionarioAuxiliar[clave]=="blanco"and contadorNegro==2:
+                baldosas[clave]="negro"
+            #comprueba las baldosas fuera del diccionrio
+            if diccionarioAuxiliar[clave]=="negro":
+
+                for i in adyacentes:
+                    adyacenteX=adyacentes[i][0]+clave[0]
+                    adyacenteY=adyacentes[i][1]+clave[1]
+                    if not(adyacenteX,adyacenteY) in diccionarioAuxiliar :
+                        contadorNegroVacios=0
+                        for j in adyacentes:
+                                if (adyacenteX+adyacentes[j][0],adyacenteY+adyacentes[j][1]) in diccionarioAuxiliar and diccionarioAuxiliar[adyacenteX+adyacentes[j][0],adyacenteY+adyacentes[j][1]]=="negro":
+                                    contadorNegroVacios+=1
+                        if contadorNegroVacios==2:
+                            baldosas[adyacentes[i][0]+clave[0],adyacentes[i][1]+clave[1]]="negro"
+        #print(baldosas)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -58,13 +103,21 @@ def main(ruta):
             baldosas[coordenadaX,coordenadaY]="negro"
 
 
-    print(baldosas)
+
 
     contador=0
     for clave in baldosas:
         if baldosas[clave]=="negro":
             contador+=1
     print ("El total de baldosas en color negro es de: ",contador)
+
+    volterarPorDias(baldosas,100,valoresMovimiento)
+    contador=0
+
+    for clave in baldosas:
+        if baldosas[clave]=="negro":
+            contador+=1
+    print ("El total de baldosas en color negro despues de 1 dia es de: ",contador)
 
 
 
