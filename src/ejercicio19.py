@@ -1,5 +1,6 @@
 import json
-import re
+import time
+import random
 PATH='puzzle_input/ejercicio19.txt'
 def procesarDatos(ruta):
     """
@@ -142,27 +143,45 @@ def derivacionIzq(diccionario, node):
     else:
         #caso recursivos
         cadena = ""
-        for clave in diccionario[int(node.getContenido())][0]:
+        reglas = diccionario[int(node.getContenido())]
+        for clave in reglas[random.randint(0,len(reglas)-1)]:
             nodo = Nodo(contenido = clave)
             node.setHijo(nodo)
             #return derivacionIzq(diccionario, nodo)
             cadena += derivacionIzq(diccionario, nodo)
         return cadena
 
-def comprobacion(cadena):
-    pass
+def comprobacion(cadena, listaValidas):
+    if cadena in listaValidas:
+        return True
+    else:
+        return False
 
 #ahora nos falta en efecto hacer las derivaciones correspondientes
 def main(ruta):
-    gramatica, cadenas = procesarDatos(ruta)
+    gramatica, cadenasInput = procesarDatos(ruta)
     #debo construir mi arbol en base a la cadena
     #vamos a hacer derivaciones mas a la izq
     arbolParseo = Arbol()
     #ahora voy a hacer la insercion de los nodos
-    raiz = Nodo(contenido ="0")
-    arbolParseo.insertarNodo(raiz)
-    cadena = derivacionIzq(gramatica, raiz)
-    print(arbolParseo)
-    print(cadena)
+    tiempo = int(time.time())+ 20*60 #parseamos distintas opciones durante 3 min
+    cadenas = set()
+    while not int(time.time()) == tiempo:
+        raiz = Nodo(contenido ="0")
+        #arbolParseo.insertarNodo(raiz)
+        cadena = derivacionIzq(gramatica, raiz)
+        cadenas.add(cadena)
+    listaCadenasValidas = list(cadenas)
+    validos = 0
+    print(listaCadenasValidas)
+    for chain in cadenasInput:
+        if comprobacion(chain, listaCadenasValidas):
+            validos += 1
+        else:
+            validos += 0
+    print("la lista de cadenas que cumplen con la regla 0 son: ",validos)
+    #with open('puzzle_input/derivaciones.txt','w') as f:
+    #    f.write(str(cadenas))
+    #print(len(cadena))
 
 main(PATH)
