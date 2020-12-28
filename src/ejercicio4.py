@@ -2,7 +2,7 @@ import re
 import json
 PATH='puzzle_input/ejercicio4.txt'
 PATH2= 'puzzle_input/ejercicio4M.txt'
-VALIDOS= 'puzzle_input/validos.txt'
+
 def main(ruta):
     pasaportes = list()
     camposObligatorios = {"byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"}
@@ -11,6 +11,7 @@ def main(ruta):
     arch.close()
     bandera = 0
     listaDiccionarios = list()
+    listaDiccionarios2= list()
     with open(ruta) as f:
         string = ""
         temp = list()
@@ -24,16 +25,15 @@ def main(ruta):
                     temp2 = valores.split(":")
                     tabla[temp2[0]]=temp2[1]
                 if (set(camposObligatorios).issubset(set(tabla.keys()))) and validarPasaporte(tabla):
+                    listaDiccionarios2.append(tabla)
+                if (set(camposObligatorios).issubset(set(tabla.keys()))):
                     listaDiccionarios.append(tabla)
                 string =""
             bandera+=1
 
-    archive = json.dumps(listaDiccionarios, indent=4)
-    nuevo = open("puzzle_input/resultado.json","w")
-    nuevo.write(archive)
-    nuevo.close()
-    print("La lista de pasaportes validos es:",len(listaDiccionarios))
-    return listaDiccionarios
+
+    print("La lista de pasaportes validos para la partes 1 es:",len(listaDiccionarios))
+    print("La lista de pasaportes validos para la partes 2 es:",len(listaDiccionarios2)-1)
 
 
 def validarPasaporte(pasaporte):
@@ -63,4 +63,4 @@ def validarPasaporte(pasaporte):
 
     return value
 
-main(PATH)
+main(PATH2)
