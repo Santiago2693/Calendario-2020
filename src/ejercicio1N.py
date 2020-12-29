@@ -1,4 +1,5 @@
 PATH='puzzle_input/ejercicio1.txt'
+PATH2='puzzle_input/ejercicio1M.txt'
 def main(ruta):
     #la funcion devuelve una lista con los numeros del archivo
     numeros = list()
@@ -27,9 +28,4 @@ def main(ruta):
     print("La multiplicación de los tres números que suman 2020 es:",multiplicacionDeTres)
 
 
-
-
-
-
-
-main(PATH)
+main(PATH2)
