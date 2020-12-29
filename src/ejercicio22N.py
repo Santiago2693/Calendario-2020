@@ -1,4 +1,5 @@
 PATH='puzzle_input/ejercicio22.txt'
+PATH2='puzzle_input/ejercicio22M.txt'
 def main1(ruta):
     jugador1=list()
     jugador2=list()
