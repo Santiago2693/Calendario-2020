@@ -1,4 +1,5 @@
 PATH='puzzle_input/ejercicio3.txt'
+PATH2='puzzle_input/ejercicio3M.txt'
 def rutaASeguir(derecha,abajo,camino):
     posicionFila=0
     arbolesCortados=0
