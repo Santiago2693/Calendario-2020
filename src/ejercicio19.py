@@ -164,7 +164,7 @@ def main(ruta):
     #vamos a hacer derivaciones mas a la izq
     arbolParseo = Arbol()
     #ahora voy a hacer la insercion de los nodos
-    tiempo = int(time.time())+ 20*60 #parseamos distintas opciones durante 3 min
+    tiempo = int(time.time())+ 60*60 #parseamos distintas opciones durante 3 min
     cadenas = set()
     while not int(time.time()) == tiempo:
         raiz = Nodo(contenido ="0")
