@@ -1,4 +1,5 @@
 entrada=[14,8,16,0,1,17]
+#funcuiona, pero no es eficiente cuando se le pasas muchas iteracciones
 """
 def numeroHablado(numero,entrada):
 
@@ -22,14 +23,10 @@ def numeroHablado(numero,entrada):
         for i in range(len(entrada)):
 
             ultimosDosValores[entrada[i]]=(i+1,0)
-        print(ultimosDosValores)
-
-
         i=len(entrada)
         numeroActual=entrada[i-1]
 
         while (i!=numero):
-
 
             if ultimosDosValores[numeroActual][1]==0:
                 numeroActual=0
@@ -41,24 +38,8 @@ def numeroHablado(numero,entrada):
             else:
                 ultimosDosValores[numeroActual]=(i,0)
 
-
-
-        print("El numero", numero,"hablado:",numeroActual)
+        print("El numero", numero,"hablado es:",numeroActual)
 def main():
+    numeroHablado(2020,entrada)
     numeroHablado(30000000,entrada)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 main()

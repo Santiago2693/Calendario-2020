@@ -27,19 +27,8 @@ def main(ruta):
         for line in archivo:
             camino.append(line.strip())
 
-
-
     print("El total de arboles cortados de la parte 1 es de:",rutaASeguir(3,1,camino))
     print("La multiplicacion de los arboles cortados de la parte 2 es de:",rutaASeguir(1,1,camino)*rutaASeguir(3,1,camino)*rutaASeguir(5,1,camino)*rutaASeguir(7,1,camino)*rutaASeguir(1,2,camino))
-
-
-
-
-
-
-
-
-
 
 
 
