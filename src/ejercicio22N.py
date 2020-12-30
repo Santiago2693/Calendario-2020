@@ -80,7 +80,7 @@ def juegoRecursivo(jugador1,jugador2):
 
                 ganador=juegoRecursivo(auxiliar1,auxiliar2)
                 #dependiendo del ganador del juego recursivo uno de los jugadores
-                #robara la cartas del otro
+                #robara la carta del otro
                 if ganador==1:
                     carta1=jugador1[0]
                     carta2=jugador2[0]
@@ -96,7 +96,7 @@ def juegoRecursivo(jugador1,jugador2):
                     jugador2.append(carta2)
                     jugador2.append(carta1)
             #si no se cumple la condicion anterior el juego sigue como en
-            #la parte 1 o el flujo norma;
+            #la parte 1 o el flujo normal;
             else:
 
                 if jugador1[0]>=jugador2[0]:
@@ -114,7 +114,7 @@ def juegoRecursivo(jugador1,jugador2):
                     jugador2.append(carta2)
                     jugador2.append(carta1)
             #se comprueba si el mazo resultante de la ronda actual es igual
-         #a uno anterior, si es asi, se cambia las banderas para terminar el juego
+            #a uno anterior, si es asi, se cambia las banderas para terminar el juego
 
             for listaAuxiliar in barajas1:
                 if listaAuxiliar==jugador1:
@@ -122,14 +122,14 @@ def juegoRecursivo(jugador1,jugador2):
             for listaAuxiliar in barajas2:
                 if listaAuxiliar==jugador2:
                     bandera2=True
-        #caso contrario se para el juego y se determinar al ganador al jugado 1
+        #caso contrario se para el juego y se determinar al ganador al jugador 1
         if bandera2==True or bandera1==True:
             ganador=1
             break
         #finalmente se añade el mazo actual a la lista de barajas jugadas
         barajas1.append(jugador1.copy())
         barajas2.append(jugador2.copy())
-    #si alguien se queda sin cartas se determina el jugador
+    #si alguien se queda sin cartas se determina el ganador
     if len(jugador1)==0:
         ganador=2
     if len(jugador2)==0:
