@@ -54,7 +54,7 @@ def volterarPorDias(baldosas,dias,adyacentes):
                                     contadorNegroVacios+=1
                         if contadorNegroVacios==2:
                             baldosas[adyacentes[i][0]+clave[0],adyacentes[i][1]+clave[1]]="negro"
-        #print(baldosas)
+
 
 
 

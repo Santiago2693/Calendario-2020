@@ -1,5 +1,7 @@
-pkCARD = 1327981
-pkDOOR = 2822615
+pkCARDM = 1327981
+pkDOORM = 2822615
+pkCARD=17115212
+pkDOOR=3667832
 sNumber = 7 # no se si este valor cambia por cada uno
 div = 20201227
 
