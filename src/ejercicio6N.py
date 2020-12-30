@@ -1,4 +1,5 @@
 PATH ='puzzle_input/ejercicio6M.txt'
+PATH2 ='puzzle_input/ejercicio6.txt'
 def procesarInput(ruta):
     grupos = list()
     with open(ruta) as arch:
@@ -46,5 +47,5 @@ def sumaDirecta(grupos):
             total += len(interseccion)
     return total
 
-print(str(sumatoriaInclusiva(procesarInput(PATH))))
-print(str(sumaDirecta(procesarInput(PATH))))
+print(str(sumatoriaInclusiva(procesarInput(PATH2))))
+print(str(sumaDirecta(procesarInput(PATH2))))
