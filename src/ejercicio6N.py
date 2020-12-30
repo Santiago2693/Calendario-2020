@@ -12,7 +12,7 @@ def procesarInput(ruta):
         grupos.append(opciones)
     return grupos
 
-def sumatoria(grupos):
+def sumatoriaInclusiva(grupos):
     total =0
     for grupo in grupos:
         if len(grupo) ==1:
@@ -29,4 +29,22 @@ def sumatoria(grupos):
             total += len(union)
     return total
 
-print(str(sumatoria(procesarInput(PATH))))
+def sumaDirecta(grupos):
+    total =0
+    for grupo in grupos:
+        if len(grupo) ==1:
+            total += len(grupo[0])
+        elif len(grupo) ==0:
+            pass
+        else:
+            personas = len(grupo)
+            interseccion = grupo[0]
+            i = 0
+            while i< len(grupo):
+                interseccion = interseccion.intersection(grupo[i])
+                i+=1
+            total += len(interseccion)
+    return total
+
+print(str(sumatoriaInclusiva(procesarInput(PATH))))
+print(str(sumaDirecta(procesarInput(PATH))))
