@@ -115,7 +115,7 @@ def juegoRecursivo(jugador1,jugador2):
                     jugador2.append(carta1)
             #se comprueba si el mazo resultante de la ronda actual es igual
          #a uno anterior, si es asi, se cambia las banderas para terminar el juego
-            cuando se añade una carta al mazo del otro jugador se añade
+
             for listaAuxiliar in barajas1:
                 if listaAuxiliar==jugador1:
                     bandera1=True
