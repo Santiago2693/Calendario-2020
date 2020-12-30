@@ -1,4 +1,5 @@
 PATH = 'puzzle_input/ejercicio10M.txt'
+PATH2 = 'puzzle_input/ejercicio10.txt'
 def procesarInput(ruta):
     with open(ruta) as f:
         adaptadores = list()
@@ -169,4 +170,4 @@ def main(ruta):
     adaptadores = sorted(input)
     formas = contarOpciones(Nodo(contenido =0), adaptadores, nodosParseados)
     print("las formas son: ", formas)
-main(PATH)
+main(PATH2)
