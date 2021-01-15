@@ -7,14 +7,14 @@ def rutaASeguir(derecha,abajo,camino):
     longitud=len(camino[0])
     for i in range(0,len(camino)-abajo,abajo):
         #si se sale del camino en escencia debe regresar el inicio
-        #ejemplo debe ir a la posicion 13, pero la maxima es 10 por lo tanto
+        #ejemplo debe ir a la posicion 13, pero la maxima posicion es 10 por lo tanto
         #se va a la 2
         if posicionFila+derecha>=longitud:
             posicionFila=(posicionFila+derecha)-longitud
 
             if camino[i+abajo][posicionFila]=="#":
                 arbolesCortados+=1
-        #si no solo sigue en el camino
+        #si no, solo sigue en el camino
 
         else:
             posicionFila+=derecha

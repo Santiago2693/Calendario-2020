@@ -62,7 +62,7 @@ def main(ruta):
                 auxiliar=list(convertirABinario(int(valor)))
 
                 #el valor que deberia ir en la direccion de memoria es transformado
-                #para que se ajusten a la regla de la macara actual.
+                #para que se ajusten a la regla de la mascara actual.
                 #print(mascaraActual)
                 for i in range(len(mascaraActual)):
                     if not mascaraActual[i]=="X":
