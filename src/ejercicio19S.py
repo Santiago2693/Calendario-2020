@@ -68,6 +68,7 @@ print("El conjunto de las cadenas validas para la parte 1 es de:",contador)
 #a que se puede entrar en un bucle infinito al genera las cadena 42 42 42, ademas
 #la regla 11 ahora tiene 3 posibilidades deferentes en lugar de 2 como las otras
 def recursivo2():
+    """
     #si analizamos la gramatica si aparece los numeros que se repetiran si se genera
     #un bucle infinito son 42 y 31, por lo cual de las reglas consideradas se va a sacar su
     #transformacion para estas reglas
@@ -84,8 +85,50 @@ def recursivo2():
     #para este punto hallar todas las reglas posibles no es eficiente
     #por lo cual ahora se va a analizar la cadena y encontraar si se
     #deriva de 0
+    contador = 0
     for cadena in cadenas:
-        quiebre42 = [False for a in range(len(cadena)//puntoQuiebre)]
-        quiebre31 = [False for b in range(len(cadena)//puntoQuiebre)]
+        quiebre42 = [True for a in range(len(cadena)//puntoQuiebre) if a in regla42]
+        quiebre31 = [True for b in range(len(cadena)//puntoQuiebre) if b in regla31]
+        sumatoria = len(quiebre42) + len(quiebre31)
+        if sumatoria == (len(cadena)//puntoQuiebre):
+            contador +=1
+    return contador
+print(recursivo2())
+"""
+    r42 = reglasConsideradas[42]
+    r31 = reglasConsideradas[31]
+    chunkSize = len(r42[0])
 
-recursivo2()
+    count = 0
+    for msg in cadenas:
+        chunks42 = [False for _ in range(len(msg)//chunkSize)]
+        chunks31 = [False for _ in range(len(msg)//chunkSize)]
+
+        # determine which chunks come from which rules
+        currChunk = 0
+        for i in range(0, len(msg), chunkSize):
+            if msg[i:i+chunkSize] in r42:
+                chunks42[currChunk] = True
+            if msg[i:i+chunkSize] in r31:
+                chunks31[currChunk] = True
+            currChunk += 1
+
+        # does this message match the rules?
+        count42, count31 = 0,0
+        currChunk = 0
+        if chunks42[currChunk] == True:
+            count42 += 1
+            currChunk +=1
+            while currChunk < len(chunks42) and chunks42[currChunk]:
+                count42 += 1
+                currChunk += 1
+            while currChunk < len(chunks31) and chunks31[currChunk]:
+                count31 += 1
+                currChunk += 1
+            if currChunk == len(chunks31) and 0 < count31 < count42:
+                count += 1
+
+    return count
+
+c = recursivo2()
+print(c)
