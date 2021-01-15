@@ -1,5 +1,5 @@
 PATH='puzzle_input/ejercicio19S.txt'
-
+PATH2='puzzle_input/ejercicio19.txt'
 """
 Esta parte de codigo sirve para obtener lo siguiente y guardarlo en variables globale
 1. Un diccionario con las reglas de la gramatica
