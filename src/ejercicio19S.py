@@ -6,22 +6,25 @@ def recursivo(inicioCadena):
     #coje la primera lista en otros caso existiran dos listas de un regla.
     transformacion=gramatica[inicioCadena]
     #esto es para eliminar unas comillas debido a que el archivo tiene
-    #comillas y cuando lo lee se ponen dobles y si es esto ya es el final de legal
-    #cadena o el caso base, por lo cual se devuelve a si mismo
+    #comillas y cuando lo lee se ponen dobles y si es esto ya es el final de una
+    #cadena o el caso base, por lo cual se devuelve a si mismo ya que la regla
+    #no se puede seguir tranformando
     if ['"a"'] in transformacion:
         return  ['a']
     if ['"b"'] in transformacion:
         return  ['b']
-    #se define una lista de todas las cadenas que se formaran con la regla
+    #si la regla ya fue cnsiderada se devulve las cadenas generadas por dicha regla
     if inicioCadena in reglasConsideradas:
         return reglasConsideradas[inicioCadena]
+    #se define una lista de posibilidades que guardaran todas las cadenas generadas
+    #de la regla actual
     listaDePosibilidades=list()
     for posibilidades in transformacion:
         listaAuxiliar=list()
         for regla in posibilidades:
             subOpciones=recursivo(int(regla))
-            #todo el hijo de la izquierda y lo que se deribe simplemente se debe agregar a legal
-            #lista auxiliar, en otras palabras cuando la lista esta vacia se debe agregar algo a ella
+            #todo el hijo de la izquierda y lo que se derive simplemente se debe agregar a la
+            #lista auxiliar, en otras palabras cuando la lista esta vacia se debe agregar todo a ella
             if len(listaAuxiliar)==0:
                 listaAuxiliar=subOpciones.copy()
             #se define todas las combinaciones posible que van a generarse en el hijo de la derecha
@@ -58,7 +61,7 @@ reglasConsideradas=dict()
 
 
 gramaticaGenerada=recursivo(0)
-
+#se ve cuantas reglas son parte de la regla 0
 contador=0
 for a in cadenas:
     if a in gramaticaGenerada:
