@@ -76,8 +76,8 @@ def main(ruta):
 
 
             else:
-                #si es una mascara se tomara el valor de l mascaraActual para
-                #la transformacion necesaria
+                #si es una mascara se tomara el valor de la mascaraActual para
+                #la transformacion necesaria del valor de memoria.
                 mascaraActual=valor.strip()
 
     total=0

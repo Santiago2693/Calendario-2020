@@ -1,26 +1,9 @@
 PATH='puzzle_input/ejercicio19S.txt'
 PATH2='puzzle_input/ejercicio19.txt'
-"""
-Esta parte de codigo sirve para obtener lo siguiente y guardarlo en variables globale
-1. Un diccionario con las reglas de la gramatica
-2. Una lista de las cadenas que luego tendremos que comprobar
-"""
-gramatica = dict()
-cadenas = list()
-with open(PATH) as archivo:
-    for line in archivo:
-        if line == "\n":
-            break
-        datos = line.strip().split(":")
-        gramatica[int(datos[0])]= [x.split() for x in datos[1].strip().split("|")]
-    for line in archivo:
-        cadenas.append(line.strip())
-
-reglasConsideradas=dict()
 def recursivo(inicioCadena):
 
-    #se coje todas las opciones del resultado de la cadena ejemplo o=[32,42],
-    #coje los dos numeros
+    #se coje todas las opciones del resultado de la cadena ejemplo o=[32,42]
+    #coje la primera lista en otros caso existiran dos listas de un regla.
     transformacion=gramatica[inicioCadena]
     #esto es para eliminar unas comillas debido a que el archivo tiene
     #comillas y cuando lo lee se ponen dobles y si es esto ya es el final de legal
@@ -55,6 +38,24 @@ def recursivo(inicioCadena):
     reglasConsideradas[inicioCadena]=listaDePosibilidades
 
     return listaDePosibilidades
+"""
+Esta parte de codigo sirve para obtener lo siguiente y guardarlo en variables globale
+1. Un diccionario con las reglas de la gramatica
+2. Una lista de las cadenas que luego tendremos que comprobar
+"""
+gramatica = dict()
+cadenas = list()
+with open(PATH) as archivo:
+    for line in archivo:
+        if line == "\n":
+            break
+        datos = line.strip().split(":")
+        gramatica[int(datos[0])]= [x.split() for x in datos[1].strip().split("|")]
+    for line in archivo:
+        cadenas.append(line.strip())
+
+reglasConsideradas=dict()
+
 
 gramaticaGenerada=recursivo(0)
 

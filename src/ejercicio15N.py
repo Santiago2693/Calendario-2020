@@ -1,5 +1,5 @@
 entrada=[14,8,16,0,1,17]
-#funcuiona, pero no es eficiente cuando se le pasas muchas iteracciones
+#funciona, pero no es eficiente cuando se le pasas muchas iteracciones
 """
 def numeroHablado(numero,entrada):
 

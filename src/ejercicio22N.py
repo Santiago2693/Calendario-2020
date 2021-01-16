@@ -26,7 +26,7 @@ def main1(ruta):
             jugador1.append(carta1)
             jugador1.append(carta2)
         else:
-        #de igual manera con el jugador 1
+        #de igual manera con el jugador 2
             carta1=jugador1[0]
             carta2=jugador2[0]
             del jugador2[0]
@@ -63,8 +63,8 @@ def juegoRecursivo(jugador1,jugador2):
 
     while not (len(jugador1)==0 or len(jugador2)==0):
 
-        #si no tienen u baraja similar a barajas que se se han jugado en el juego
-        #actual que sigan jugano
+        #si no tienen una baraja similar a barajas quese han jugado en el juego
+        #actual que sigan jugando
 
         if bandera1==False and bandera2==False:
             #si la carta que van a jugar es de igual o mayor al numero de cartas sobrantes
