@@ -59,6 +59,7 @@ def main(ruta):
 
                 #se extrae la direccion de memoria
                 memoria= clave[4:len(clave)-1]
+                #se extrae el valor de memoria
                 auxiliar=list(convertirABinario(int(valor)))
 
                 #el valor que deberia ir en la direccion de memoria es transformado
