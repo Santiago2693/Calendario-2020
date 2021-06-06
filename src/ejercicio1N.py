@@ -27,7 +27,7 @@ def main(ruta):
                             multiplicacionDeTres=numeros[i]*numeros[j]*numeros[k]
 
     print ("La multiplicación de los dos números que suman 2020 es:",multiplicacion)
-    print("La multiplicación de los tres números que suman 2020 es:",multiplicacionDeTres)
+    #print("La multiplicación de los tres números que suman 2020 es:",multiplicacionDeTres)
 
 
 main(PATH2)
